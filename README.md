@@ -6,10 +6,10 @@ Esta Aplicação gera simulações de entradas e saidas de dados (desposito, ext
 
 
 
-# Olá, eu sou a Umberto! 👋
+# Olá, eu sou o Umberto! 👋
 
 
-## Desenvolvido em curso certificado pela DIO.
+## Desenvolvido primeiramente em curso certificado pela DIO.
 
-Atualmente esta em desenvolvimento, nescessitando de melhorias, que ocorrerão a medida que o aprendizado evoluir.
+Atualmente esta em desenvolvimento, nescessitando de melhorias graduais, que ocorrerão a medida que o aprendizado evoluir.
 
