@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-
+from tkinter.simpledialog import askfloat
 
 class ContaBancaria:
     def __init__(self):
@@ -29,7 +29,7 @@ class ContaBancaria:
         if excede_saldo:
             opcao_credito = messagebox.askyesno("Erro", "Saldo insuficiente. Deseja fazer um empréstimo?")
             if opcao_credito:
-                credito_extra = float(messagebox.askfloat("Empréstimo", f"Digite valor do empréstimo, limite de R${self.limite:.2f} : "))
+                credito_extra = askfloat("Empréstimo", f"Digite valor do empréstimo, limite de R${self.limite:.2f} : ")
                 self.credito_base += credito_extra
                 self.saldo += credito_extra
                 if credito_extra >= self.ESPECIAL:
@@ -82,7 +82,7 @@ class InterfaceGrafica(tk.Tk):
 
         self.btn_sair = tk.Button(self, text="Sair", command=self.destroy, font=("Arial", 12))
         self.btn_sair.pack()
-
+        
         self.acao_atual = None
 
     def handle_deposito(self):
@@ -108,6 +108,7 @@ class InterfaceGrafica(tk.Tk):
             resultado = self.acao_atual(valor)
             messagebox.showinfo("Resultado", resultado)
             self.btn_confirmar.pack_forget()
+            self.entry_valor.delete(0, tk.END)  # Limpa o campo de entrada após a ação
         except ValueError:
             messagebox.showerror("Erro", "Valor inválido!")
 
@@ -115,8 +116,9 @@ class InterfaceGrafica(tk.Tk):
         try:
             valor = float(self.entry_valor.get())
             resultado = self.acao_atual(valor)
-            messagebox.showinfo("Resultado", resultado)
+            messagebox.showinfo("Confirmado", resultado)
             self.btn_confirmar.pack_forget()
+            self.entry_valor.delete(0, tk.END)  # Limpa o campo de entrada após a ação
         except ValueError:
             messagebox.showerror("Erro", "Valor inválido!")
 
